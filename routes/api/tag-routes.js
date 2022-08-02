@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then(TagData => res.json(TagData))
+  .then(dbTagData => res.json(dbTagData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -42,12 +42,12 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-  .then(TagData => {
-    if (!TagData) {
+  .then(dbTagData => {
+    if (!dbTagData) {
       res.status(404).json({ message: 'Tag not found' });
       return;
     }
-    res.json(TagData);
+    res.json(dbTagData);
   })
   .catch(err => {
     console.log(err);
